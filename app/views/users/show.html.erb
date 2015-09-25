@@ -1,0 +1,8 @@
+<p>Name: <%=@user.name%></p> 
+<p>alias:<%=@user.alias%></p>
+<p>email: <%=@user.email%></p>
+
+<p><a href="/posts">Bright Ideas</a><a href="/sessions/<%= @user.id%>" data-method='delete'>Logout</a></p>
+
+<p>Total Number of Posts:<%= @user.posts.count %></p>
+<p>Total Number of Likes:<%= @user.likes.count %></p>

@@ -1,0 +1,23 @@
+<h1>Hi <%=@user.name%>! (<a href="/sessions/<%= @user.id%>" data-method='delete'>Logout</a>)</h1> 
+<%=flash[:error]%>
+<%=flash[:error_like]%>
+<form action='/posts/create' method='post'>
+
+	<p>Post something here! <input type='text' name='post[post]'></p>
+	<input type='submit' value='Idea!'>
+	<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token%>'>
+</form>
+<% @posts.reverse.each do |post| %>
+	<p><a href="/users/<%= post.user.id%>" data-method='get'><%= post.user.name %></a>says:<%=post.post%></p>
+ 
+ 	<form action='/likes/create' method='post'>
+ 		<p><input type='submit' value='Like'><a href="/posts/<%= post.id %>" data-method="get"><%= post.likes.count %></a></p>
+ 		<input type='hidden' name='post_id' value='<%= post.id %>'>
+ 		<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token%>'>
+ 	</form>
+ 	<% if post.user.id == session[:user_id] %>
+ 		<p><a href="/posts/<%= post.id %>" data-method="delete"><button>Delete</button></a></p>
+ 	<% end %>
+
+<% end%>
+
