@@ -1,21 +1,24 @@
-<h1><%=@post.user.name%> says: <%=@post.post%>!</h1>
+<div class='container'>
+	<h1><%=@post.user.name%> says: <%=@post.post%>!</h1>
 
-<a href="/posts">Bright Ideas</a>
-<a href="/sessions/<%= @post.user.id%>" data-method='delete'>Logout</a></p>
-
-<table>
-	<thead>
-		<tr>
-			<th>Alias</th>
-			<th>Name</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @post.likes.group("user_id").each do |like| %>
+	<a href="/posts">Bright Ideas</a>
+	<a href="/sessions/<%= @post.user.id%>" data-method='delete'>Logout</a></p>
+	<div class='show'>
+	<table>
+		<thead>
 			<tr>
-				<td><%= like.user.alias %></td>
-				<td><%= like.user.name %></td>
+				<th>Alias</th>
+				<th>Name</th>
 			</tr>
-		<% end %>
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			<% @post.likes.group("user_id").each do |like| %>
+				<tr>
+					<td><%= like.user.alias %></td>
+					<td><%= like.user.name %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	</div>
+</div>

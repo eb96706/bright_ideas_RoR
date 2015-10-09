@@ -1,8 +1,15 @@
-<p>Name: <%=@user.name%></p> 
-<p>alias:<%=@user.alias%></p>
-<p>email: <%=@user.email%></p>
+<div class='container'>
+	<p>Name: <%=@user.name%></p> 
+	<p>Alias:<%=@user.alias%></p>
+	<p>Email: <%=@user.email%></p>
+<!-- <button type="button" class="btn btn-default">Logout
+	<p><a href="/posts">Bright Ideas</a><a href="/sessions/<%= @user.id%>" data-method='delete'>Logout</a></p>
+</button> -->	
+	<a href="/posts">Bright Ideas</a>
+	<a href="/sessions/<%= @user.id%>" data-method='delete'>Logout</a>
+	<p>Total Number of Posts:<%= @user.posts.count %></p>
+	<p>Total Number of Likes:<%= @user.likes.count %></p>
 
-<p><a href="/posts">Bright Ideas</a><a href="/sessions/<%= @user.id%>" data-method='delete'>Logout</a></p>
+</div>
 
-<p>Total Number of Posts:<%= @user.posts.count %></p>
-<p>Total Number of Likes:<%= @user.likes.count %></p>
+<!-- <a href="/posts">Bright Ideas</a> -->
